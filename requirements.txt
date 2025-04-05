@@ -9,3 +9,7 @@ tensorflow
 joblib
 PyYaml
 streamlit
+# h5py
+# keras_preprocessing
+# mlflow
+# opencv-python
