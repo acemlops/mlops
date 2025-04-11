@@ -39,7 +39,7 @@ model_dir: models
 
 mlflow_config:
   artifact_dir: artifacts
-  experiment_name: mlops_VGG19
+  experiment_name: mlops_CNN_v2
   run_name: mlops
   registered_model_name: mlops
   remote_server_uri: http://127.0.0.1:5000
