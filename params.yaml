@@ -37,8 +37,7 @@ img_augment:
 
 model_dir: models
 
-mlflow_config:
-  artifact_dir: artifacts
+   artifact_dir: artifacts
   experiment_name: mlops_CNN_v2
   run_name: mlops
   registered_model_name: mlops
