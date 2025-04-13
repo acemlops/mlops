@@ -57,7 +57,8 @@ st.markdown("""
 # ✅ Load the model with caching
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("../models/trained.h5")
+    return tf.keras.models.load_model("models/trained.h5")
+
 
 try:
     model = load_model()
