@@ -1,4 +1,4 @@
-name: MRI
+name: Plant Disease Detection CI/CD
 
 on:
   push:
@@ -29,12 +29,12 @@ jobs:
 
       - name: Docker Build and Push to Docker Hub
         run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker build -t mlops:latest .
           docker tag mlops:latest atharva907/mlops:latest
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push atharva907/mlops:latest
         env:
-          DOCKER_CLI_ACI: 1
+          DOCKER_CLI_EXPERIMENTAL: enabled
 
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.28.0
