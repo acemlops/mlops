@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
-          if [ -f req_production.txt ]; then pip install -r req_production.txt; fi
+          if [ -f req_prod.txt ]; then pip install -r req_prod.txt; fi
 
       - name: Lint with flake8 and PyTest
         run: |
@@ -29,12 +30,12 @@ jobs:
 
       - name: Docker Build and Push to Docker Hub
         run: |
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           docker build -t mlops:latest .
           docker tag mlops:latest atharva907/mlops:latest
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push atharva907/mlops:latest
         env:
-          DOCKER_CLI_EXPERIMENTAL: enabled
+          DOCKER_CLI_ACI: 1
 
       - name: Run Trivy vulnerability scanner in fs mode
         uses: aquasecurity/trivy-action@0.28.0
