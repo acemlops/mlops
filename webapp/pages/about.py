@@ -4,7 +4,7 @@ st.set_page_config(page_title="About Us", layout="centered")
 
 st.title("👥 About Us")
 
-st.markdown("### Meet Our Team")
+st.markdown("Team GreenShield")
 
 # Create columns for team members
 col1, col2 = st.columns(2)
@@ -12,38 +12,34 @@ col3, col4 = st.columns(2)
 
 # Team Member 1
 with col1:
-    st.image("https://example.com/photo1.jpg", caption="Alice Johnson", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads", caption="Rameshwari Badarkhe", width=200)
     st.markdown("""
-    **📧** [alice@example.com](mailto:alice@example.com)  
-    **📱** +91-1234567890  
-    **🌐** [LinkedIn](https://www.linkedin.com/in/alicejohnson)  
+    **📧** badarkherame18@gmail.com 
+    **📱** +91-8767452181 
     """)
 
 # Team Member 2
 with col2:
-    st.image("https://example.com/photo2.jpg", caption="Bob Smith", width=200)
+    st.image("/Users/atharvasatishchougale/Library/CloudStorage/GoogleDrive-atharvachougale99@gmail.com/My Drive", caption="Atharva Chougale", width=200)
     st.markdown("""
-    **📧** [bob@example.com](mailto:bob@example.com)  
-    **📱** +91-2345678901  
-    **🌐** [LinkedIn](https://www.linkedin.com/in/bobsmith)  
+    **📧** atharvachougale99@gmail.com 
+    **📱** +91-9156523207  
     """)
 
 # Team Member 3
 with col3:
-    st.image("https://example.com/photo3.jpg", caption="Carol Singh", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads", caption="Raghav Dashrath", width=200)
     st.markdown("""
     **📧** [carol@example.com](mailto:carol@example.com)  
-    **📱** +91-3456789012  
-    **🌐** [LinkedIn](https://www.linkedin.com/in/carolsingh)  
+    **📱** +91-7058524533 
     """)
 
 # Team Member 4
 with col4:
-    st.image("https://example.com/photo4.jpg", caption="David Kumar", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads", caption="Atharva Bhaleghare", width=200)
     st.markdown("""
-    **📧** [david@example.com](mailto:david@example.com)  
-    **📱** +91-4567890123  
-    **🌐** [LinkedIn](https://www.linkedin.com/in/davidkumar)  
+    **📧** atharvbhaleghare@gmail.com 
+    **📱** +91-9322617537
     """)
 
 st.markdown("---")
