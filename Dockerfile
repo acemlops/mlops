@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM python:3.9-slim as builder
+FROM python:3.9-slim AS builder
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc python3-dev && \

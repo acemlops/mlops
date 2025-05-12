@@ -6,13 +6,13 @@ import io
 import base64
 
 # 🌿 Page config
-st.set_page_config(page_title="🌿 Plant Disease Detection System", layout="centered")
+st.set_page_config(page_title="🌱 GreenShield 🛡️", layout="centered")
 
 # 🌿 Custom CSS for fullscreen dark glass box
 st.markdown("""
     <style>
     .stApp {
-        background-image: url("https://static.vecteezy.com/system/resources/previews/026/489/428/large_2x/stunning-vertical-garden-backgrounds-featuring-lush-plants-against-a-captivating-wall-backdrop-perfect-for-adding-a-touch-of-nature-to-your-projects-ai-generated-photo.jpg");
+        background-image: url("https://cdn.pixabay.com/photo/2023/05/22/08/07/lotus-8010129_1280.jpg");
         background-size: cover;
         background-attachment: fixed;
         background-position: center;
@@ -32,7 +32,19 @@ st.markdown("""
         background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
         z-index: -1;
     }
-    .glass-box h1, .glass-box h4, .glass-box p {
+    .glass-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    }
+    .glass-box h1{
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2.5rem;
+    }
+    .glass-box h4, .glass-box p {
         color: white;
         text-align: center;
     }
@@ -41,6 +53,7 @@ st.markdown("""
         color: white;
         font-weight: bold;
         border-radius: 8px;
+        text-align: center;
     }
     .glass-box .stFileUploader {
         margin-bottom: 20px;
@@ -83,10 +96,16 @@ classes = [
 st.markdown('<div class="glass-box">', unsafe_allow_html=True)
 
 # 🌿 Title
-st.markdown('<h1>🌿 Plant Disease Detection System</h1>', unsafe_allow_html=True)
+st.markdown("""
+    <div style="width:100%; text-align:center;">
+        <h1 style="display:inline-block; color:white; font-size:2.5rem; margin-top:20px;">
+            🌱 GreenShield 🛡️
+        </h1>
+    </div>
+""", unsafe_allow_html=True)
 
 # 📤 Upload
-uploaded_file = st.file_uploader("Choose a leaf image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Choose a leaf image", type=["JPG", "JPEG", "PNG"])
 
 # 🖼️ If image uploaded
 if uploaded_file:
@@ -129,19 +148,42 @@ if uploaded_file:
                 except:
                     font = ImageFont.load_default()
 
-                text = f"Disease: {disease}\nConfidence: {confidence:.2f}%"
-                draw.text((10, 10), text, fill="white", font=font)
+                text = f"Disease: {disease} | Confidence: {confidence:.2f}%"
 
+                # Get text size
+                bbox = draw.textbbox((0, 0), text, font=font)
+                text_width = bbox[2] - bbox[0]
+                text_height = bbox[3] - bbox[1]
+
+                # Set position at bottom with some padding
+                x = 10
+                y = report_img.height - text_height - 10
+
+                # Optional: add semi-transparent background for contrast
+                overlay_height = text_height + 10
+                overlay = Image.new('RGBA', (report_img.width, overlay_height), (0, 0, 0, 128))
+                report_img.paste(overlay, (0, y - 5), overlay)
+
+                # Draw white bold-like text (simulate bold by drawing multiple times)
+                for offset in [(0,0), (1,0), (0,1), (1,1)]:
+                    draw.text((x + offset[0], y + offset[1]), text, fill="black", font=font)
+
+                # Save to buffer
                 buffer = io.BytesIO()
                 report_img.save(buffer, format="PNG")
                 buffer.seek(0)
                 return buffer
+
 
             # 📥 Downloadable report
             report_buffer = generate_report(image, class_label, confidence)
             b64 = base64.b64encode(report_buffer.read()).decode()
             href = f'<a href="data:file/png;base64,{b64}" download="plant_disease_report.png">📥 <b>Download Report</b></a>'
             st.markdown(href, unsafe_allow_html=True)
+
+    
+if st.button("📄 About Us"):
+    st.switch_page("pages/about.py")
 
 # 🧊 END: Glass Box
 st.markdown('</div>', unsafe_allow_html=True)
