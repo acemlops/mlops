@@ -12,7 +12,7 @@ col3, col4 = st.columns(2)
 
 # Team Member 1
 with col1:
-    st.image("/Users/atharvasatishchougale/Downloads", caption="Rameshwari Badarkhe", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads/WhatsApp Image 2025-05-13 at 00.28.14.jpeg", caption="Rameshwari Badarkhe", width=200)
     st.markdown("""
     **📧** badarkherame18@gmail.com 
     **📱** +91-8767452181 
@@ -28,7 +28,7 @@ with col2:
 
 # Team Member 3
 with col3:
-    st.image("/Users/atharvasatishchougale/Downloads", caption="Raghav Dashrath", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads/WhatsApp Image 2025-05-12 at 23.58.05.jpeg", caption="Raghav Dashrath", width=200)
     st.markdown("""
     **📧** [carol@example.com](mailto:carol@example.com)  
     **📱** +91-7058524533 
@@ -36,7 +36,7 @@ with col3:
 
 # Team Member 4
 with col4:
-    st.image("/Users/atharvasatishchougale/Downloads", caption="Atharva Bhaleghare", width=200)
+    st.image("/Users/atharvasatishchougale/Downloads/WhatsApp Image 2025-05-12 at 23.56.45.jpeg", caption="Atharva Bhaleghare", width=200)
     st.markdown("""
     **📧** atharvbhaleghare@gmail.com 
     **📱** +91-9322617537
